@@ -1,0 +1,213 @@
+/* ============================================================
+   Akshat Khosla — portfolio interactions
+   No dependencies. Progressive: page is fully readable without JS.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- sticky header state ---------- */
+  var head = document.querySelector('.site-head');
+  function onScroll() {
+    if (head) head.classList.toggle('is-stuck', window.scrollY > 12);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile nav ---------- */
+  var burger = document.querySelector('.burger');
+  var mnav = document.querySelector('.mobile-nav');
+  if (burger && mnav) {
+    burger.addEventListener('click', function () {
+      var open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      mnav.classList.toggle('is-open', !open);
+    });
+    mnav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        burger.setAttribute('aria-expanded', 'false');
+        mnav.classList.remove('is-open');
+      }
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) || reduce) {
+    revealables.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          ro.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealables.forEach(function (el) { ro.observe(el); });
+  }
+
+  /* ---------- metric count-up ---------- */
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function countUp(el) {
+    var target = parseFloat(el.dataset.to);
+    var dur = 1250;
+    var dec = (el.dataset.to.indexOf('.') > -1) ? 1 : 0;
+    var t0 = null;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      el.textContent = (target * easeOut(p)).toFixed(dec);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var nums = document.querySelectorAll('[data-to]');
+  if (!('IntersectionObserver' in window) || reduce) {
+    nums.forEach(function (el) { el.textContent = el.dataset.to; });
+  } else {
+    var mo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { countUp(en.target); mo.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { el.textContent = '0'; mo.observe(el); });
+  }
+
+  /* ---------- project disclosure ---------- */
+  document.querySelectorAll('.disclose').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.proj');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      card.classList.toggle('is-open', !open);
+      btn.querySelector('.disclose-label').textContent = !open ? 'Hide detail' : 'Architecture';
+    });
+  });
+
+  /* ---------- scroll-spy: nav + trace rail ---------- */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
+
+  function setActive(id) {
+    navLinks.forEach(function (a) {
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+    });
+  }
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var visible = {};
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { visible[en.target.id] = en.intersectionRatio; });
+      var best = null, bestR = 0;
+      Object.keys(visible).forEach(function (id) {
+        if (visible[id] > bestR) { bestR = visible[id]; best = id; }
+      });
+      if (best && bestR > 0) setActive(best);
+    }, { threshold: [0, 0.15, 0.4, 0.75], rootMargin: '-68px 0px -45% 0px' });
+    sections.forEach(function (s) { so.observe(s); });
+  }
+
+  /* size the trace-rail spans proportionally to section height */
+  function sizeRail() {
+    var railLinks = document.querySelectorAll('.span-link');
+    if (!railLinks.length) return;
+    var total = sections.reduce(function (sum, s) { return sum + s.offsetHeight; }, 0);
+    if (!total) return;
+    var budget = Math.min(window.innerHeight * 0.52, 420);
+    railLinks.forEach(function (a) {
+      var sec = document.getElementById(a.getAttribute('href').slice(1));
+      if (!sec) return;
+      var h = Math.max(16, (sec.offsetHeight / total) * budget);
+      a.style.height = h + 'px';
+    });
+  }
+  sizeRail();
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(sizeRail, 180);
+  });
+  window.addEventListener('load', sizeRail);
+
+  /* ---------- typed role line ---------- */
+  var typeEl = document.querySelector('[data-type]');
+  if (typeEl) {
+    var roles = JSON.parse(typeEl.dataset.type);
+    if (reduce) {
+      typeEl.querySelector('.typed').textContent = roles.join(' · ');
+    } else {
+      var ri = 0, ci = 0, deleting = false;
+      var out = typeEl.querySelector('.typed');
+      (function tick() {
+        var word = roles[ri];
+        if (!deleting) {
+          ci++;
+          out.textContent = word.slice(0, ci);
+          if (ci === word.length) { deleting = true; return setTimeout(tick, 1700); }
+          return setTimeout(tick, 52);
+        }
+        ci--;
+        out.textContent = word.slice(0, ci);
+        if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; return setTimeout(tick, 320); }
+        setTimeout(tick, 24);
+      })();
+    }
+  }
+
+  /* ---------- copy email ---------- */
+  var copyBtn = document.querySelector('.copy-mail');
+  if (copyBtn) {
+    var mail = copyBtn.dataset.mail;
+    var stateEl = copyBtn.querySelector('.state');
+    var reset;
+    copyBtn.addEventListener('click', function () {
+      function ok() {
+        copyBtn.classList.add('done');
+        stateEl.textContent = 'Copied';
+        clearTimeout(reset);
+        reset = setTimeout(function () {
+          copyBtn.classList.remove('done');
+          stateEl.textContent = 'Click to copy';
+        }, 2200);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mail).then(ok).catch(fallback);
+      } else { fallback(); }
+
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = mail;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); ok(); }
+        catch (e) { stateEl.textContent = 'Copy failed'; }
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  /* ---------- smooth anchor scroll with sticky-header offset ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.scrollY - 60;
+      window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', id);
+    });
+  });
+
+  /* ---------- footer year ---------- */
+  var yr = document.querySelector('[data-year]');
+  if (yr) yr.textContent = new Date().getFullYear();
+})();

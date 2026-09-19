@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Akshat Khosla — Backend and Applied AI Engineer. Python, C#/.NET, FastAPI, RAG, LLM agents and MCP. Open to SDE II, backend and applied-AI roles in India.">
+<meta name="author" content="Akshat Khosla">
+<meta property="og:title" content="Akshat Khosla — Backend & Applied AI Engineer">
+<meta property="og:description" content="Production backend systems and the LLM infrastructure on top of them. Python, C#/.NET, FastAPI, RAG, agents, MCP.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0b0d'/%3E%3Ctext y='68' x='50' text-anchor='middle' font-family='monospace' font-size='46' font-weight='bold' fill='%23d4ff4f'%3EAK%3C/text%3E%3C/svg%3E">
+<title>Akshat Khosla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Chivo:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ TRACE RAIL ============ -->
+<aside class="rail" aria-label="Section progress">
+  <div class="rail-inner">
+    <span class="rail-label">trace</span>
+    <a class="span-link" href="#work"     data-spy aria-label="Projects"><span class="tip">projects</span></a>
+    <a class="span-link" href="#exp"      data-spy aria-label="Experience"><span class="tip">experience</span></a>
+    <a class="span-link" href="#research" data-spy aria-label="Research"><span class="tip">research</span></a>
+    <a class="span-link" href="#stack"    data-spy aria-label="Stack"><span class="tip">stack</span></a>
+  </div>
+</aside>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Akshat Khosla — home">
+      <span class="brand-mark" aria-hidden="true">AK</span>
+      <span class="brand-name"><b>Akshat Khosla</b> <span>/ engineer</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#work"     data-spy>Projects</a>
+      <a href="#exp"      data-spy>Experience</a>
+      <a href="#research" data-spy>Research</a>
+      <a href="#stack"    data-spy>Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div style="display:flex;gap:12px;align-items:center">
+      <a class="btn btn-accent" href="Akshat_Khosla_Resume.pdf" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg>
+        Résumé
+      </a>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-nav wrap" id="mnav">
+    <a href="#work">Projects</a>
+    <a href="#exp">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="status rv"><span class="dot" aria-hidden="true"></span> Open to new roles · Hyderabad, India</p>
+
+        <h1 id="h-hero" class="rv" style="--d:60ms">
+          Akshat
+          <span class="l2">Khosla</span>
+        </h1>
+
+        <p class="role-line rv" style="--d:120ms"
+           data-type='["Backend Engineer","Applied AI Engineer","SDE II · Python, C#/.NET","LLM agents, RAG, MCP"]'>
+          <span class="typed"></span><span class="caret" aria-hidden="true"></span>
+        </p>
+
+        <p class="hero-lede rv" style="--d:180ms">
+          I build <strong>production backend systems</strong> and the <strong>LLM infrastructure</strong>
+          that sits on top of them — Python and C#/.NET services, agentic tooling shipped to real users,
+          and evaluation systems that tell you whether any of it actually works.
+        </p>
+
+        <div class="cta-row rv" style="--d:240ms">
+          <a class="btn" href="https://github.com/akshatkhosla" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/akshat-khosla-549870213/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.36-1.85c3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="mailto:khoslaakshat2002@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <div class="panel rv" style="--d:300ms" role="complementary" aria-label="Quick facts">
+        <div class="panel-head"><span>status.json</span><span>live</span></div>
+        <div class="panel-body">
+          <dl style="margin:0">
+            <div class="kv"><dt>role</dt><dd>Software Engineer <span class="hl">@ GEP</span></dd></div>
+            <div class="kv"><dt>since</dt><dd>Jul 2024</dd></div>
+            <div class="kv"><dt>base</dt><dd>Hyderabad, IN</dd></div>
+            <div class="kv"><dt>open_to</dt><dd>Noida · Gurugram · NCR<br>Hyderabad · Bengaluru · Remote</dd></div>
+            <div class="kv"><dt>primary</dt><dd class="hl">Python · C#/.NET</dd></div>
+            <div class="kv"><dt>focus</dt><dd>RAG · Agents · MCP</dd></div>
+            <div class="kv"><dt>languages</dt><dd>English · Hindi</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METRICS ============ -->
+  <section class="metrics" aria-label="Key results" style="padding-block:32px">
+    <div class="wrap">
+      <div class="metrics-grid rv">
+        <div class="metric">
+          <div class="metric-num"><span class="pre">~</span><span data-to="30">30</span><span class="suf">%</span></div>
+          <div class="metric-label">less PR review time, across 8+ engineers</div>
+          <div class="metric-src">GEP · PR Copilot</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num"><span data-to="40">40</span><span class="suf">%</span></div>
+          <div class="metric-label">faster feature delivery across 3+ modules</div>
+          <div class="metric-src">GEP · config framework</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num"><span data-to="500">500</span><span class="suf">K+</span></div>
+          <div class="metric-label">student interactions modelled in research</div>
+          <div class="metric-src">Thapar · knowledge tracing</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num"><span data-to="96">96</span><span class="suf">%</span></div>
+          <div class="metric-label">manual setup eliminated across 50+ repos</div>
+          <div class="metric-src">GEP · security automation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="work" aria-labelledby="h-work">
+    <div class="wrap">
+      <p class="eyebrow rv">01 — Selected work</p>
+      <h2 class="sec-title rv" id="h-work" style="--d:60ms">Things I built end&#8209;to&#8209;end</h2>
+      <p class="sec-lede rv" style="--d:100ms">
+        Three open-source systems, each solving a different part of the same problem: making LLMs
+        useful, measurable and persistent in production. Expand any card for the architecture.
+      </p>
+
+      <div class="proj-list">
+
+        <!-- MemoryOS -->
+        <article class="proj rv">
+          <span class="proj-bar" aria-hidden="true"></span>
+          <div class="proj-main">
+            <div>
+              <p class="proj-idx">PROJECT_01</p>
+              <h3 class="proj-name">MemoryOS</h3>
+              <p class="proj-tag">A persistent memory layer for LLMs, built as an MCP server</p>
+              <p class="proj-desc">
+                Standard LLMs are stateless — every session starts from zero. MemoryOS sits between
+                you and the model as a memory layer, storing conversations, extracting structured
+                facts, and injecting relevant context back at the start of each new session. It runs
+                entirely on your machine: no API keys, no cloud, no cost.
+              </p>
+              <div class="badges">
+                <span class="badge">Python</span><span class="badge">MCP SDK</span>
+                <span class="badge">ChromaDB</span><span class="badge">SQLite</span>
+                <span class="badge">spaCy NER</span><span class="badge">SentenceTransformers</span>
+                <span class="badge">PyTorch</span><span class="badge">Ollama</span>
+              </div>
+              <div class="proj-links">
+                <a class="btn" href="https://github.com/akshatkhosla/MemoryOS" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                  Source
+                </a>
+                <span class="badge" style="border-color:var(--accent-dim);color:var(--accent)">Demo video in README</span>
+              </div>
+            </div>
+            <div class="proj-side">
+              <button class="disclose" aria-expanded="false">
+                <span class="disclose-label">Architecture</span> <span class="chev" aria-hidden="true">▾</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="proj-detail"><div><div class="detail-inner">
+            <div>
+              <p class="detail-h">How it works</p>
+              <ul class="bullets">
+                <li><b>Three memory tiers</b>, each chosen for a different access pattern: working memory in a process dict for zero-latency exact lookup, episodic memory in ChromaDB for semantic recall without exact keywords, and semantic memory in SQLite for deterministic fact lookup.</li>
+                <li><b>Entity extraction</b> runs on every message — spaCy NER plus regex relationship patterns, with a tech-term blocklist so "Python" never gets stored as a person's name.</li>
+                <li><b>Calibrated confidence scores</b> per source: PERSON detection 85%, GPE 80%, ORG and regex matches 75%, so downstream reads know how much to trust a fact.</li>
+                <li><b>Exposed over MCP</b> as a JSON-RPC server on stdio, which means it plugs straight into Claude Desktop as a tool provider.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="detail-h">Memory tiers</p>
+<pre class="flow"><span class="c">user message</span>
+      │
+      ▼
+<span class="n">extractor.py</span>  spaCy NER + regex
+      │
+      ├─► <span class="a">working</span>   dict      exact, 0-latency
+      ├─► <span class="a">episodic</span>  ChromaDB  semantic search
+      └─► <span class="a">semantic</span>  SQLite    structured facts
+                          │
+                          ▼
+              <span class="c">context injected into
+                 next session</span></pre>
+            </div>
+          </div></div></div>
+        </article>
+
+        <!-- LLM Eval Platform -->
+        <article class="proj rv" style="--d:80ms">
+          <span class="proj-bar" aria-hidden="true"></span>
+          <div class="proj-main">
+            <div>
+              <p class="proj-idx">PROJECT_02</p>
+              <h3 class="proj-name">LLM Eval Platform</h3>
+              <p class="proj-tag">Run, score and compare LLM outputs — dashboard, CLI and REST API</p>
+              <p class="proj-desc">
+                A full-stack evaluation platform: submit an eval config, run a model against a dataset,
+                score every response with LLM judges and deterministic checks, then compare runs
+                side-by-side. Every span of every run is traced and stored, so a score is always
+                explainable rather than just a number.
+              </p>
+              <div class="badges">
+                <span class="badge">FastAPI</span><span class="badge">PostgreSQL 16</span>
+                <span class="badge">SQLAlchemy 2.0 async</span><span class="badge">Pydantic v2</span>
+                <span class="badge">Alembic</span><span class="badge">React 18</span>
+                <span class="badge">TypeScript</span><span class="badge">Tailwind</span>
+                <span class="badge">TanStack</span><span class="badge">Recharts</span>
+                <span class="badge">Typer</span><span class="badge">Docker</span>
+              </div>
+              <div class="proj-links">
+                <a class="btn" href="https://github.com/akshatkhosla/llm-eval-platform" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                  Source
+                </a>
+                <span class="badge" style="border-color:var(--accent-dim);color:var(--accent)">MIT · CI on GitHub Actions</span>
+              </div>
+            </div>
+            <div class="proj-side">
+              <button class="disclose" aria-expanded="false">
+                <span class="disclose-label">Architecture</span> <span class="chev" aria-hidden="true">▾</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="proj-detail"><div><div class="detail-inner">
+            <div>
+              <p class="detail-h">How it works</p>
+              <ul class="bullets">
+                <li><b>Provider-agnostic by design</b> — Gemini, Ollama and any OpenAI-compatible endpoint sit behind one provider interface, so adding a new model is a subclass, not a rewrite.</li>
+                <li><b>Two grades of scoring</b>: LLM-as-judge with structured rubrics (0–10) for nuance, plus deterministic keyword and regex judges for fast, reproducible checks.</li>
+                <li><b>Purpose-built judges</b> for Faithfulness, Relevance and Coherence, each scoring 1–5 with written reasoning attached to the result.</li>
+                <li><b>Async runner</b> — per-sample tasks fan out with <code>asyncio.gather</code>, and each provider gets its own semaphore so a rate-limited API can be capped independently of the rest.</li>
+                <li><b>Full execution tracing</b> in an in-process OpenTelemetry-style span tracer, persisted as JSONB alongside the run and replayed in the dashboard.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="detail-h">Request path</p>
+<pre class="flow"><span class="c">CLI</span> ──┐
+        ├──► <span class="n">FastAPI</span> POST /api/v1/evals
+<span class="c">React</span> ─┘         │ add_task
+                  ▼
+            <span class="n">run_eval_background</span>
+                  │
+         asyncio.gather per sample
+                  │
+      ┌───────────┴───────────┐
+      ▼                       ▼
+<span class="a">target LLM</span>            <span class="a">judge pool</span>
+semaphore-gated        gather(...)
+      └───────────┬───────────┘
+                  ▼
+       <span class="n">PostgreSQL</span> eval_runs
+       + trace_data <span class="c">JSONB</span></pre>
+            </div>
+          </div></div></div>
+        </article>
+
+        <!-- DocMind -->
+        <article class="proj rv" style="--d:160ms">
+          <span class="proj-bar" aria-hidden="true"></span>
+          <div class="proj-main">
+            <div>
+              <p class="proj-idx">PROJECT_03</p>
+              <h3 class="proj-name">DocMind</h3>
+              <p class="proj-tag">Local-first document Q&amp;A with RAG and a tool-using agent</p>
+              <p class="proj-desc">
+                Upload PDFs, DOCX or text files and ask questions against them. A retrieval pipeline
+                grounds every answer in your own documents, and an agentic loop lets the model decide
+                which documents to search and when — chaining multiple retrievals before it answers.
+                Responses stream to the browser token by token.
+              </p>
+              <div class="badges">
+                <span class="badge">Python</span><span class="badge">Flask</span>
+                <span class="badge">Anthropic API</span><span class="badge">Tool use</span>
+                <span class="badge">ChromaDB</span><span class="badge">SentenceTransformers</span>
+                <span class="badge">SSE streaming</span>
+              </div>
+              <div class="proj-links">
+                <a class="btn" href="https://github.com/akshatkhosla/DocMind" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                  Source
+                </a>
+                <span class="badge" style="border-color:var(--accent-dim);color:var(--accent)">Demo video in README</span>
+              </div>
+            </div>
+            <div class="proj-side">
+              <button class="disclose" aria-expanded="false">
+                <span class="disclose-label">Architecture</span> <span class="chev" aria-hidden="true">▾</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="proj-detail"><div><div class="detail-inner">
+            <div>
+              <p class="detail-h">How it works</p>
+              <ul class="bullets">
+                <li><b>Ingestion</b> extracts text from PDF/DOCX/TXT, chunks it into 512-token windows with 64-token overlap so context survives the boundaries, embeds with all-MiniLM-L6-v2 into 384-dim vectors, and upserts into a persistent ChromaDB collection.</li>
+                <li><b>Retrieval</b> embeds the query with the same model — non-negotiable for a shared vector space — and runs cosine ANN over an HNSW index, returning top-k chunks with scores.</li>
+                <li><b>Three tools</b> exposed to the model: <code>search_documents</code>, <code>list_documents</code> and <code>summarise_document</code>. Tool descriptions are written with the same care as a system prompt, since they are what the model reads to decide when to call.</li>
+                <li><b>Multi-step reasoning</b> falls out of the loop: asked to compare two reports, the agent lists documents, searches each one separately, then synthesises — rather than one-shot retrieving and hoping.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="detail-h">Agentic loop</p>
+<pre class="flow"><span class="c">while True:</span>
+  resp = claude(tools, messages)
+
+  <span class="n">end_turn</span>  ─► stream answer, done
+  <span class="n">tool_use</span>  ─► execute_tool()
+               append tool_result
+               loop ──┐
+                      │
+           ┌──────────┘
+           ▼
+  <span class="a">search_documents</span>
+  <span class="a">list_documents</span>
+  <span class="a">summarise_document</span>
+           │
+           ▼
+   <span class="c">ChromaDB · cosine HNSW
+   384-dim · top-k + scores</span></pre>
+            </div>
+          </div></div></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="exp" aria-labelledby="h-exp">
+    <div class="wrap">
+      <p class="eyebrow rv">02 — Experience</p>
+      <h2 class="sec-title rv" id="h-exp" style="--d:60ms">Where I've shipped</h2>
+      <p class="sec-lede rv" style="--d:100ms">
+        Two years of production engineering across enterprise SaaS, plus research and internships
+        that pushed in the same direction: automate the tedious part, own the whole thing.
+      </p>
+
+      <div class="timeline">
+
+        <article class="job now rv">
+          <div class="job-head">
+            <h3 class="job-role">Software Engineer</h3>
+            <span class="job-co">GEP</span>
+          </div>
+          <p class="job-meta">Jul 2024 — Present · Hyderabad, India</p>
+          <ul class="bullets">
+            <li>Shipped an <b>AI-powered PR Copilot</b> (Claude Opus 4.6, Claude Code) into production, auto-generating test cases and readiness reports and cutting per-PR review time by <b>~30%</b> across 8+ engineers.</li>
+            <li>Architected a <b>scalable configuration framework</b> spanning 3+ product modules, cutting feature delivery time by <b>40%</b>.</li>
+            <li>Led an <b>Angular 8 → 20 migration</b> across 2 production repos with 150+ UI component plugins affecting 10+ pages — all 3 sprints delivered on schedule.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="badge">C#/.NET</span><span class="badge">Python</span><span class="badge">Angular</span>
+            <span class="badge">Azure</span><span class="badge">Claude Code</span><span class="badge">SQL Server</span>
+          </div>
+        </article>
+
+        <article class="job rv" style="--d:70ms">
+          <div class="job-head">
+            <h3 class="job-role">Research Assistant</h3>
+            <span class="job-co">Thapar University</span>
+          </div>
+          <p class="job-meta">Jan 2024 — Jul 2024 · Patiala, India</p>
+          <ul class="bullets">
+            <li>Designed a <b>Transformer-augmented Deep Knowledge Tracing model</b> over <b>500K+ student interactions</b>, beating LSTM baselines by <b>+6.8% AUC</b> and <b>+5.3% F1</b>.</li>
+            <li>Work published in <b>Complex &amp; Intelligent Systems</b> (2025).</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="badge">Python</span><span class="badge">PyTorch</span>
+            <span class="badge">Transformers</span><span class="badge">Deep learning</span>
+          </div>
+        </article>
+
+        <article class="job rv" style="--d:140ms">
+          <div class="job-head">
+            <h3 class="job-role">Technology Intern</h3>
+            <span class="job-co">GEP</span>
+          </div>
+          <p class="job-meta">May 2023 — Jul 2023 · Mumbai, India</p>
+          <ul class="bullets">
+            <li>Automated <b>vulnerability-alert setup across 50+ GitHub repositories</b>, collapsing a multi-day manual task to under 30 minutes — a <b>~96% reduction</b>.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="badge">Python</span><span class="badge">GitHub Actions</span><span class="badge">Security automation</span>
+          </div>
+        </article>
+
+        <article class="job rv" style="--d:210ms">
+          <div class="job-head">
+            <h3 class="job-role">Software Intern</h3>
+            <span class="job-co">Cadence Design Systems</span>
+          </div>
+          <p class="job-meta">May 2022 — Jul 2022 · Noida, India</p>
+          <ul class="bullets">
+            <li>Automated <b>IC waveform data curation and EDA analysis</b> across <b>100+ simulation datasets</b>, cutting review time by <b>50%</b>.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="badge">Python</span><span class="badge">Data pipelines</span><span class="badge">EDA</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESEARCH ============ -->
+  <section id="research" aria-labelledby="h-res">
+    <div class="wrap">
+      <p class="eyebrow rv">03 — Research</p>
+      <h2 class="sec-title rv" id="h-res" style="--d:60ms">Published work</h2>
+
+      <div class="paper rv" style="--d:100ms">
+        <p class="paper-venue">Complex &amp; Intelligent Systems · 2025 · Springer</p>
+        <h3 class="paper-title">Knowledge Tracing-Based Intelligent Framework for Formative Assessment of Students' Skills</h3>
+        <p class="paper-authors"><b>Khosla, A.</b> et al.</p>
+        <p style="color:var(--text-dim);max-width:62ch;margin:0">
+          A Transformer-augmented approach to Deep Knowledge Tracing — modelling how a learner's
+          mastery evolves across a sequence of interactions, and using that to drive formative
+          assessment. Trained and evaluated on over half a million student interactions.
+        </p>
+        <div class="paper-stats">
+          <div><div class="pstat-n">500K+</div><div class="pstat-l">interactions</div></div>
+          <div><div class="pstat-n">+6.8%</div><div class="pstat-l">AUC vs LSTM</div></div>
+          <div><div class="pstat-n">+5.3%</div><div class="pstat-l">F1 vs LSTM</div></div>
+        </div>
+      </div>
+
+      <div class="edu rv" style="--d:160ms">
+        <b>B.E. Computer Engineering</b>
+        <span class="sep">/</span> Thapar University, Patiala
+        <span class="sep">/</span> 2020 — 2024
+        <span class="sep">/</span> CGPA <b>8.7 / 10</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section id="stack" aria-labelledby="h-stack">
+    <div class="wrap">
+      <p class="eyebrow rv">04 — Toolkit</p>
+      <h2 class="sec-title rv" id="h-stack" style="--d:60ms">Tech stack</h2>
+      <p class="sec-lede rv" style="--d:100ms">
+        What I reach for. Ordered roughly by how much production time I've actually spent in each.
+      </p>
+
+      <div class="stack-grid rv" style="--d:140ms">
+        <div class="stack-cell">
+          <h3><span class="no">01</span> Languages</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">C#</span><span class="chip">TypeScript</span>
+            <span class="chip">JavaScript</span><span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="stack-cell">
+          <h3><span class="no">02</span> Backend &amp; frameworks</h3>
+          <div class="chips">
+            <span class="chip">FastAPI</span><span class="chip">ASP.NET Core</span><span class="chip">Flask</span>
+            <span class="chip">SQLAlchemy</span><span class="chip">Pydantic</span><span class="chip">asyncio</span>
+            <span class="chip">REST APIs</span>
+          </div>
+        </div>
+        <div class="stack-cell">
+          <h3><span class="no">03</span> AI / ML</h3>
+          <div class="chips">
+            <span class="chip">RAG</span><span class="chip">LLM agents</span><span class="chip">MCP</span>
+            <span class="chip">Anthropic API</span><span class="chip">Claude Code</span>
+            <span class="chip">SentenceTransformers</span><span class="chip">PyTorch</span><span class="chip">spaCy</span>
+          </div>
+        </div>
+        <div class="stack-cell">
+          <h3><span class="no">04</span> Frontend</h3>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">Angular</span>
+            <span class="chip">TypeScript</span><span class="chip">Tailwind</span>
+          </div>
+        </div>
+        <div class="stack-cell">
+          <h3><span class="no">05</span> Cloud &amp; DevOps</h3>
+          <div class="chips">
+            <span class="chip">Azure</span><span class="chip">Docker</span>
+            <span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">Git</span>
+          </div>
+        </div>
+        <div class="stack-cell">
+          <h3><span class="no">06</span> Databases</h3>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">MongoDB</span>
+            <span class="chip">SQLite</span><span class="chip">Redis</span><span class="chip">ChromaDB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="rv">
+        <h2>Let's build<br><em>something.</em></h2>
+        <p>
+          I'm open to SDE II, backend and applied-AI roles — in Delhi NCR, Hyderabad,
+          Bengaluru, or fully remote within India. The fastest way to reach me is email.
+        </p>
+        <div class="copy-row">
+          <button class="copy-mail" data-mail="khoslaakshat2002@gmail.com">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            khoslaakshat2002@gmail.com
+            <span class="state">Click to copy</span>
+          </button>
+          <a class="btn btn-accent" href="mailto:khoslaakshat2002@gmail.com?subject=Role%20opportunity">
+            Send an email
+          </a>
+        </div>
+      </div>
+
+      <div class="rv" style="--d:100ms">
+        <nav class="links-list" aria-label="Elsewhere">
+          <a href="https://github.com/akshatkhosla" target="_blank" rel="noopener noreferrer">
+            <span>GitHub — @akshatkhosla</span><span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/akshat-khosla-549870213/" target="_blank" rel="noopener noreferrer">
+            <span>LinkedIn — Akshat Khosla</span><span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="mailto:khoslaakshat2002@gmail.com">
+            <span>Email</span><span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="tel:+919910405417">
+            <span>+91 99104 05417</span><span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="Akshat_Khosla_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Résumé — PDF</span><span class="arr" aria-hidden="true">→</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <span>© <span data-year>2026</span> Akshat Khosla</span>
+      <span>Hyderabad, India · Built with vanilla HTML, CSS &amp; JS</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
