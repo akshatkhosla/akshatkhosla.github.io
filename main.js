@@ -158,7 +158,34 @@
     }
   }
 
-  /* ---------- copy email ---------- */
+  /* ---------- hero email button ----------
+     mailto: opens a mail client only when the OS has one registered. On a
+     machine with no default handler the click is silently inert, which reads
+     as a broken button. So: always copy the address and confirm it, and let
+     the mailto fire alongside for anyone who does have a client. */
+  document.querySelectorAll('.js-mail').forEach(function (el) {
+    var label = el.querySelector('.mail-label');
+    var original = label ? label.textContent : '';
+    var timer;
+    el.addEventListener('click', function () {
+      if (!label) return;
+      var addr = el.dataset.mail;
+      function confirmCopy() {
+        label.textContent = 'Copied ✓';
+        el.classList.add('copied');
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          label.textContent = original;
+          el.classList.remove('copied');
+        }, 2200);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(addr).then(confirmCopy).catch(function () {});
+      }
+    });
+  });
+
+  /* ---------- copy email (footer) ---------- */
   var copyBtn = document.querySelector('.copy-mail');
   if (copyBtn) {
     var mail = copyBtn.dataset.mail;

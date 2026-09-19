@@ -261,6 +261,12 @@ section { padding-block: var(--s-9); position: relative; z-index: 2; }
   color: var(--accent);
   box-shadow: 0 6px 22px -8px rgba(212,255,79,.4);
 }
+.btn.copied {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.mail-label { display: inline-block; min-width: 4.6em; text-align: left; }
+
 .btn-accent {
   background: var(--accent); color: #0a0b0d; border-color: var(--accent);
   font-weight: 700;
