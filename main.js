@@ -89,7 +89,9 @@
   });
 
   /* ---------- scroll-spy: nav + trace rail ---------- */
-  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  /* #contact is a <footer>, not a <section> — include it, or the last section
+     stays highlighted forever once the user reaches the bottom of the page. */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id], footer[id]'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
 
   function setActive(id) {
@@ -109,13 +111,28 @@
       if (best && bestR > 0) setActive(best);
     }, { threshold: [0, 0.15, 0.4, 0.75], rootMargin: '-68px 0px -45% 0px' });
     sections.forEach(function (s) { so.observe(s); });
+
+    /* The last target sits at the very bottom, where the page runs out of
+       scroll before it can dominate the observer's band. Once we're within a
+       hair of the end, that target is unambiguously what's being read. */
+    window.addEventListener('scroll', function () {
+      var atEnd = window.innerHeight + window.scrollY >=
+                  document.documentElement.scrollHeight - 2;
+      if (atEnd && sections.length) setActive(sections[sections.length - 1].id);
+    }, { passive: true });
   }
 
   /* size the trace-rail spans proportionally to section height */
   function sizeRail() {
     var railLinks = document.querySelectorAll('.span-link');
     if (!railLinks.length) return;
-    var total = sections.reduce(function (sum, s) { return sum + s.offsetHeight; }, 0);
+    /* Size against the rail's own targets, not every spied element — the
+       footer is spied but has no span, and counting it would shrink the rest. */
+    var total = 0;
+    railLinks.forEach(function (a) {
+      var s = document.getElementById(a.getAttribute('href').slice(1));
+      if (s) total += s.offsetHeight;
+    });
     if (!total) return;
     var budget = Math.min(window.innerHeight * 0.52, 420);
     railLinks.forEach(function (a) {
