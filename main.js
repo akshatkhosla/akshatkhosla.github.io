@@ -100,27 +100,58 @@
     });
   }
 
-  if ('IntersectionObserver' in window && sections.length) {
-    var visible = {};
-    var so = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { visible[en.target.id] = en.intersectionRatio; });
-      var best = null, bestR = 0;
-      Object.keys(visible).forEach(function (id) {
-        if (visible[id] > bestR) { bestR = visible[id]; best = id; }
-      });
-      if (best && bestR > 0) setActive(best);
-    }, { threshold: [0, 0.15, 0.4, 0.75], rootMargin: '-68px 0px -45% 0px' });
-    sections.forEach(function (s) { so.observe(s); });
-
-    /* The last target sits at the very bottom, where the page runs out of
-       scroll before it can dominate the observer's band. Once we're within a
-       hair of the end, that target is unambiguously what's being read. */
-    window.addEventListener('scroll', function () {
-      var atEnd = window.innerHeight + window.scrollY >=
-                  document.documentElement.scrollHeight - 2;
-      if (atEnd && sections.length) setActive(sections[sections.length - 1].id);
-    }, { passive: true });
+  /* Position-based, deliberately NOT IntersectionObserver ratios.
+     intersectionRatio is the fraction of the TARGET's own area inside the
+     root band, so it is not comparable between targets of different heights:
+     a short block can score 1.0 while a tall section filling the whole screen
+     scores 0.3. Sections here range from ~300px to well over 1500px, and the
+     footer never wins because the page stops scrolling before it can fill the
+     band. A single reading line is unambiguous at every scroll position. */
+  function docTop(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
   }
+
+  function updateSpy() {
+    if (!sections.length) return;
+
+    // At the very end of the document nothing sits below the last target.
+    var doc = document.documentElement;
+    if (window.innerHeight + window.scrollY >= doc.scrollHeight - 2) {
+      setActive(sections[sections.length - 1].id);
+      return;
+    }
+
+    var line = window.scrollY + 110;           // just under the sticky header
+    if (docTop(sections[0]) > line) {          // still up in the hero
+      setActive(null);
+      return;
+    }
+    var cur = sections[0].id;
+    for (var i = 0; i < sections.length; i++) {
+      if (docTop(sections[i]) <= line) cur = sections[i].id;
+    }
+    setActive(cur);
+  }
+
+  /* rAF is the right throttle while the page is visible, but it never fires in
+     a background tab — so a scroll landing there would latch spyTick true and
+     freeze the nav permanently. Run inline whenever the page is hidden. */
+  var spyTick = false;
+  function scheduleSpy() {
+    if (spyTick) return;
+    spyTick = true;
+    var run = function () { updateSpy(); spyTick = false; };
+    if (document.hidden) run();
+    else requestAnimationFrame(run);
+  }
+  window.addEventListener('scroll', scheduleSpy, { passive: true });
+  window.addEventListener('resize', scheduleSpy, { passive: true });
+  window.addEventListener('load', updateSpy);
+  document.addEventListener('visibilitychange', function () {
+    spyTick = false;   // clear anything stranded by a hidden-tab scroll
+    updateSpy();
+  });
+  updateSpy();
 
   /* size the trace-rail spans proportionally to section height */
   function sizeRail() {
